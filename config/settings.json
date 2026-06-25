@@ -1,0 +1,6 @@
+{
+  "api": {
+    "base_url": "https://www-genesis.destatis.de/genesisWS/rest/2020/",
+    "timeout": 30
+  }
+}
