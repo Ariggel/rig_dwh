@@ -1,14 +1,14 @@
 import os
 import requests
 import json
-import zipfile
-import io
 import pandas
 from config import paths
 from src.utilities import exceptions,logging
+from extractors.destatis_extractor.parse_zip import parse_zip
+from extractors.destatis_extractor.parse_csv import parse_csv
 
 
-def download_raw(table_id : str, year_start : int = 2020, year_end : int = 2025, language_data : str = 'de') -> pandas.DataFrame:
+def extract(table_id : str, year_start : int = 2020, year_end : int = 2025, language_data : str = 'de') -> pandas.DataFrame:
     """
     Downloads tabular data from the Genesis API, extracts the compressed CSV response,
     and returns it as a pandas DataFrame.
@@ -53,9 +53,6 @@ def download_raw(table_id : str, year_start : int = 2020, year_end : int = 2025,
         requests.RequestException:
             If the API request fails (e.g., network issues, invalid response).
 
-        zipfile.BadZipFile:
-            If the API response cannot be interpreted as a valid ZIP archive.
-
         pandas.errors.ParserError:
             If the CSV content cannot be parsed into a DataFrame.
 
@@ -69,10 +66,11 @@ def download_raw(table_id : str, year_start : int = 2020, year_end : int = 2025,
         - Ensure that environment variables are managed securely in production environments.
 
     Example:
-        >>> data_raw = download_raw("12345-0001", 2020, 2022, "de")
+        >>> data_raw = extract("12345-0001", 2020, 2022, "de")
     """
     
     logger = logging.get_logger(__name__)
+
 
     settings_file = paths.dir_config / 'settings.json'
     with open(settings_file, 'r') as f:
@@ -80,13 +78,12 @@ def download_raw(table_id : str, year_start : int = 2020, year_end : int = 2025,
 
     api_access_url = config['api']['base_url']
     api_access_token = os.getenv('GENESIS_ACCESS_TOKEN')
-    
     headers = {
          'Content-Type' : 'application/x-www-form-urlencoded'
         ,'username'     : api_access_token
         ,'password'     : ''
     }
-    
+
     try:
         data_raw_request = requests.post(
              api_access_url + 'data/tablefile'
@@ -106,25 +103,8 @@ def download_raw(table_id : str, year_start : int = 2020, year_end : int = 2025,
         logger.critical('API request failed: %s', data_raw_request.status_code)
         raise exceptions.DataDownloadError(f"Failed to download data: {e}")
 
-    try:
-        data_raw_bytes = io.BytesIO(data_raw_request.content)
-        data_raw_zipped = zipfile.ZipFile(data_raw_bytes)
-        logger.info('API response successfully interpreted as ZIP archive, containing files: %s', data_raw_zipped.namelist())
-    except zipfile.BadZipFile as e:
-        logger.critical('Failed to interpret API response as ZIP archive: %s', {e})
-        raise exceptions.DataDownloadError(f"Failed to interpret API response as ZIP archive: {e}")
-    
-    try:
-        data_raw_csv = data_raw_zipped.open(data_raw_zipped.namelist()[0])
-        data_raw_data_frame = pandas.read_csv(
-             data_raw_csv
-            ,delimiter  = ';'
-            ,decimal    = ','
-            ,na_values  = ['...','.','-','/','x']
-        )
-        logger.info('CSV content successfully parsed into DataFrame with shape: %s', data_raw_data_frame.shape)
-    except pandas.errors.ParserError as e:
-        logger.critical('Failed to parse CSV content into DataFrame: %s', {e})
-        raise exceptions.DataDownloadError(f"Failed to parse CSV content into DataFrame: {e}")
+    data_raw_zipped = parse_zip(data_raw_request)
+    data_raw_data_frame = parse_csv(data_raw_zipped)
+
 
     return data_raw_data_frame

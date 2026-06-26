@@ -7,3 +7,6 @@ class AuthenticationError(GenesisError):
 
 class DataDownloadError(GenesisError):
     pass
+
+class DataStorageError(GenesisError):
+    pass
