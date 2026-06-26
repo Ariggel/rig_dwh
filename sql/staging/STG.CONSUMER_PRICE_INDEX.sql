@@ -11,6 +11,24 @@ Creation Date:	24.06.2026
 Topic:			Consumer price index / inflation
 Sources:		DESTATIS
 
+Business Definition
+--------------------------------------------------------------------------------------------------------------
+The Consumer Price Index (CPI) measures the average price development of goods and
+services purchased by private households in Germany.
+
+The dataset provides the official monthly Consumer Price Index published by DESTATIS
+and serves as the central inflation indicator within the DWH.
+
+Typical use cases include:
+- Inflation analysis
+- Purchasing power analysis
+- Economic trend monitoring
+- Deflation and inflation reporting
+- Reference value for economic forecasting models
+- KPI calculations and dashboard reporting
+
+The index is stored at monthly granularity and contains one record per reporting month.
+
 Logic
 --------------------------------------------------------------------------------------------------------------
 1. Load raw consumer price index data from DESTATIS source table.
