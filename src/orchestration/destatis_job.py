@@ -35,6 +35,7 @@ def run() -> dict[str, pandas.DataFrame]:
         year_start = config.get("year_start", 2020)
         year_end = config.get("year_end", 2025)
         language_data = config.get("language_data", "de")
+        table_name_db = config.get("table_name_db")
 
         logger.info('Starting data extraction for table ID: %s, years: %d-%d, language: %s', table_id, year_start, year_end, language_data)
         
@@ -46,7 +47,10 @@ def run() -> dict[str, pandas.DataFrame]:
             raise
 
         try:
-            results[table_id] = data_frame
+            results[table_id] = {
+                 "data_frame" : data_frame
+                ,"table_name_db" : table_name_db
+            }
             logger.info('Data for table ID: %s stored in results dictionary', table_id)
         except Exception as e:
             logger.error('Failed to store data for table ID: %s in results dictionary: %s', table_id, e)

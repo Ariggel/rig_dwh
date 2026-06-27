@@ -4,8 +4,8 @@ import json
 import pandas
 from config import paths
 from src.utilities import exceptions,logging
-from extractors.destatis_extractor.parse_zip import parse_zip
-from extractors.destatis_extractor.parse_csv import parse_csv
+from src.extractors.destatis_extractor.parse_zip import parse_zip
+from src.extractors.destatis_extractor.parse_csv import parse_csv
 
 
 def extract(table_id : str, year_start : int = 2020, year_end : int = 2025, language_data : str = 'de') -> pandas.DataFrame:
