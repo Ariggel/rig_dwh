@@ -2,5 +2,10 @@
   "api": {
     "base_url": "https://www-genesis.destatis.de/genesisWS/rest/2020/",
     "timeout": 30
+  },
+  "sql": {
+    "server": ".\\MSSQLSERVER01",
+    "database": "DB_DWH",
+    "auth_type": "sql"
   }
 }
