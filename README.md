@@ -1,0 +1,1 @@
+![Process structure of this project](docs/RIG_DWH_DIAGRAM.jpg)
