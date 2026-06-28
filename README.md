@@ -1,148 +1,128 @@
-# Rig Data Warehouse
+![Python](https://img.shields.io/badge/Python-3.14-blue)
+![SQL Server](https://img.shields.io/badge/SQL_Server-2022-red)
+![Power BI](https://img.shields.io/badge/Power_BI-Latest-yellow)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-A modular Data Warehouse project built with Python, Microsoft SQL Server and Power BI.
+# RIG Data Warehouse
 
-The project demonstrates the complete lifecycle of modern Business Intelligence development, including automated data extraction, layered data warehousing, statistical forecasting and interactive reporting.
+Enterprise-style Data Warehouse built from scratch using Python, Microsoft SQL Server and Power BI.
 
----
-
-## Overview
-
-This project implements a classic enterprise-style Data Warehouse architecture.
-
-External data sources are automatically extracted using Python, stored in a SQL Server based Raw Layer, transformed into a structured dimensional model and finally consumed by Power BI for reporting and KPI calculation.
-
-Python is also used for statistical analysis and forecasting, allowing predicted values to be written back into the Data Warehouse and integrated into reports.
+The project demonstrates the complete lifecycle of modern Business Intelligence development, including automated data extraction, layered data warehousing, statistical data processing and interactive reporting.
 
 ---
 
-## Architecture
+# Overview
 
-![Architecture](docs/RIG_DWH_DIAGRAM.jpg)
+The purpose of this project is to design and implement a complete Data Warehouse solution following common enterprise standards.
+
+Instead of focusing solely on reporting, the project covers the entire data lifecycle:
+
+- Data extraction from external APIs
+- Centralized data storage
+- Layered Data Warehouse architecture
+- Business-oriented data transformation
+- Statistical data processing
+- Semantic modelling
+- Business Intelligence reporting
+
+The implementation follows a modular software architecture, allowing new data sources, transformation pipelines and reporting models to be added with minimal effort.
 
 ---
 
-## Technology Stack
+# Architecture
 
-### Programming
+![Architecture](docs/images/architecture.png)
+
+➡ **docs/architecture.md**
+
+---
+
+# Technology Stack
+
+## Programming Languages
 
 - Python 3.14
-- T-SQL
-- Power Query (M)
+- Transact-SQL (T-SQL)
+- Power Query M
 - DAX
 
-### Database
+## Database
 
 - Microsoft SQL Server
 
-### Python Libraries
-
-- pandas
-- SQLAlchemy
-- requests
-- python-dotenv
-- pyodbc
-
-### BI
+## Business Intelligence
 
 - Power BI Desktop
 - DAX Studio
 
 ---
 
-## Project Architecture
+# Project Structure
 
-The Data Warehouse follows a layered architecture.
+A detailed explanation of the project structure can be found in:
 
-### Data Sources
-
-External public and internal data sources including
-
-- DESTATIS (Genesis API)
-- LDBNRW (Genesis NRW API)
-- additional sources (planned)
-
-### Extraction Layer
-
-Python-based extractors provide
-
-- API communication
-- authentication
-- download handling
-- file parsing
-- error handling
-- logging
-
-### Raw Layer
-
-Stores source data in its original structure.
-
-Characteristics:
-
-- no business logic
-- reproducible loads
-- complete source history
-- source system traceability
-
-### Staging Layer
-
-Performs technical transformations such as
-
-- datatype conversion
-- standardization
-- cleansing
-- mapping
-- enrichment
-
-### Core Layer
-
-Provides the business-ready analytical model.
-
-Contains
-
-- standardized dimensions
-- fact tables
-- KPIs
-- semantic structures
-
-### Forecast Layer
-
-Python is used for
-
-- statistical analysis
-- time series modelling
-- forecasting
-- writing predicted values back into the warehouse
-
-### Reporting
-
-Power BI connects to the Core Layer through Power Query M as an Power BI Add-in.
-
-Reporting includes
-
-- interactive dashboards
-- KPI calculations (DAX)
-- Power Query transformations
-- Python visuals
+➡ **docs/project_structure.md**
 
 ---
 
-## Objectives
+# Documentation
 
-The purpose of this project is to demonstrate practical implementation of enterprise Data Warehouse concepts including
+The complete project documentation is located inside the `docs` directory.
 
-- ETL development
-- SQL Server Data Warehousing
-- dimensional modelling
-- Business Intelligence
-- statistical forecasting
-- Python software engineering
-- Power BI reporting
+| Document | Description |
+|----------|-------------|
+| architecture.md | Overall system architecture |
+| installation.md | Installation and setup guide |
+| project_structure.md | Repository structure |
+| etl_pipeline.md | End-to-end ETL process |
+| sql_design.md | SQL Server and Data Warehouse design |
+| reporting.md | Power BI reporting architecture |
+| forecasting.md | Forecasting and statistical modelling |
+| roadmap.md | Planned features and project roadmap |
 
 ---
 
-## Author
+# Development Principles
 
-Sascha Klein
+The project follows several software engineering principles commonly found in enterprise Data Warehouse environments:
 
-Business Intelligence | Data Warehouse | Python | SQL Server | Power BI | Power Query M | T-SQL
+- Modular architecture
+- Separation of concerns
+- Configuration over hardcoding
+- Layered Data Warehouse design
+- Structured logging
+- Centralized exception handling
+- Reusable ETL components
+- Maintainable SQL standards
+- Business-oriented data modelling
+
+---
+
+# Current Status
+
+| Component | Status |
+|-----------|--------|
+| Python Extraction Framework | ✔ Complete |
+| SQL Loader | ✔ Complete |
+| SQL Server Infrastructure | ✔ Complete |
+| RAW Layer | ✔ Complete |
+| STAGING Layer | 🟡 In Progress |
+| CORE Layer | 🔲 Planned |
+| Forecasting | 🔲 Planned |
+| Reporting | 🔲 Planned |
+
+---
+
+# About
+
+This project is developed as a personal portfolio project with the goal of implementing a production-oriented Business Intelligence platform using modern Data Engineering and Data Warehouse practices.
+
+Although developed as a personal project, the architecture follows concepts commonly used in enterprise Business Intelligence environments.
+
+---
+
+# Author
+
+**Sascha Klein**
+
+Business Intelligence • Data Engineering • Data Warehousing • SQL Server • Python • Power BI
