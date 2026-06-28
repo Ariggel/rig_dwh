@@ -59,7 +59,7 @@ The Data Warehouse follows a layered architecture.
 External public and internal data sources including
 
 - DESTATIS (Genesis API)
-- Deutsche Bundesbank
+- LDBNRW (Genesis NRW API)
 - additional sources (planned)
 
 ### Extraction Layer
@@ -127,31 +127,6 @@ Reporting includes
 
 ---
 
-## Current Features
-
-- Automated extraction from the DESTATIS Genesis API
-- Modular extractor architecture
-- Central configuration management
-- Structured logging
-- Custom exception handling
-- SQL Server loading
-- Layered Data Warehouse architecture
-
----
-
-## Planned Features
-
-- Additional data sources
-- Incremental loading
-- Metadata management
-- Batch execution logging
-- Data quality validation
-- Forecast automation
-- Unit testing
-- CI/CD pipeline
-
----
-
 ## Objectives
 
 The purpose of this project is to demonstrate practical implementation of enterprise Data Warehouse concepts including
@@ -170,4 +145,4 @@ The purpose of this project is to demonstrate practical implementation of enterp
 
 Sascha Klein
 
-Business Intelligence | Data Warehouse | Python | SQL Server | Power BI
+Business Intelligence | Data Warehouse | Python | SQL Server | Power BI | Power Query M | T-SQL
