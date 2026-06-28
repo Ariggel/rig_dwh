@@ -31,7 +31,7 @@ The implementation follows a modular software architecture, allowing new data so
 
 # Architecture
 
-![Architecture](docs/images/architecture.png)
+![Architecture](docs/images/RIG_DWH_DIAGRAM.jpg)
 
 ➡ **docs/architecture.md**
 
