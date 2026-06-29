@@ -133,7 +133,7 @@ DROP TABLE IF EXISTS #SRC_DATA_CPI
 		,SRC.[value]	-- Consumer price index value for specific month and year
 		,SRC.[statistics_code]		-- Official identifier code for this specific destatis statistic
 		,SRC.[value_variable_label]	-- Filter element for identification of the actual consumer price index
-		,SRC.[_1_variable_attribute_code]	-- Nvarchar value for months from the raw data
+		,SRC.[1_variable_attribute_code]	-- Nvarchar value for months from the raw data
 	INTO #SRC_DATA_CPI
 	FROM DB_DWH.RAW.DATA_DESTATIS_CONSUMER_PRICE_INDEX AS SRC
 
@@ -158,7 +158,7 @@ SELECT
 	,'DESTATIS' 								AS [STAMP_SOURCE]
 	,GETDATE() 									AS [STAMP_TIME]
 FROM #SRC_DATA_CPI AS SRC
-LEFT JOIN #SRC_MAP_MONTH ON #SRC_MAP_MONTH.[MONTH_NAME] = SRC.[_1_variable_attribute_code]
+LEFT JOIN #SRC_MAP_MONTH ON #SRC_MAP_MONTH.[MONTH_NAME] = SRC.[1_variable_attribute_code]
 WHERE	SRC.[value_variable_label] = 'Verbraucherpreisindex' -- Source dataset contains multiple indicator types.  Restrict loading to the official consumer price index
 AND		TRY_CAST(SRC.[value] AS DECIMAL(18,4)) IS NOT NULL -- Exclude non-populated periods and placeholder records
 
