@@ -7,5 +7,10 @@
   "api_ldbnrw"    : {
   "base_url"      : "https://www.landesdatenbank.nrw.de/ldbnrwws/rest/2020",
    "timeout"      : 30
+  },
+  "sql": {
+    "server": ".\\MSSQLSERVER01",
+    "database": "DB_DWH",
+    "auth_type": "sql"
   }
 }
