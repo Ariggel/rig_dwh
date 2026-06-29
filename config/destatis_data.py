@@ -1,11 +1,11 @@
 TABLE_CONFIG = {
-    #"61111-0001": {
-    #    "year_start": 2010
-    #    ,"year_end": 2025
-    #    ,"language_data": "de"
-    #    ,"table_name": "Verbraucherpreisindex: Deutschland, Jahre"
-    #    ,"table_name_db": "DATA_DESTATIS_CONSUMER_PRICE_INDEX"
-    #},
+    "61111-0001": {
+        "year_start": 2010
+        ,"year_end": 2025
+        ,"language_data": "de"
+        ,"table_name": "Verbraucherpreisindex: Deutschland, Jahre"
+        ,"table_name_db": "DATA_DESTATIS_CONSUMER_PRICE_INDEX"
+    },
     "12211-0902": {
          "year_start": 2017
          ,"year_end": 2025
