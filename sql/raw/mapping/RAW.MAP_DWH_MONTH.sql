@@ -31,7 +31,7 @@ A static reference mapping table used across all DWH layers for month standardiz
 
 Pipelines
 --------------------------------------------------------------------------------------------------------------
-- Currently no dedicated orchestration pipeline assigned.
+- PIPELINE_INTERNAL_MAPPING
 
 Dependencies
 --------------------------------------------------------------------------------------------------------------
