@@ -72,7 +72,6 @@ The complete project documentation is located inside the `docs` directory.
 | Document | Description |
 |----------|-------------|
 | architecture.md | Overall system architecture |
-| installation.md | Installation and setup guide |
 | project_structure.md | Repository structure |
 | etl_pipeline.md | End-to-end ETL process |
 | sql_design.md | SQL Server and Data Warehouse design |
