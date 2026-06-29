@@ -10,7 +10,7 @@ The objective is to separate data extraction, storage, transformation and report
 
 # High-Level Architecture
 
-![Architecture](docs/images/RIG_DWH_DIAGRAM.jpg)
+![Architecture](images/RIG_DWH_DIAGRAM.jpg)
 
 ---
 
