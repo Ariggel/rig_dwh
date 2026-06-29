@@ -72,8 +72,8 @@ def extract(table_id : str, year_start : int = 2020, year_end : int = 2025, lang
 
     config = get_settings.get()
 
-    api_access_url = config['api']['base_url']
-    api_access_token = os.getenv('DESTATIS_ACCESS_TOKEN')
+    api_access_url = config['api_destatis']['base_url']
+    api_access_token = os.getenv('GENESIS_ACCESS_TOKEN')
     headers = {
          'Content-Type' : 'application/x-www-form-urlencoded'
         ,'username'     : api_access_token
