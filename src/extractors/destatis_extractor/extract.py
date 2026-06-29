@@ -2,8 +2,7 @@ import os
 import requests
 import json
 import pandas
-from config import paths
-from src.utilities import exceptions,logging
+from src.utilities import exceptions,logging, get_settings
 from src.extractors.destatis_extractor.parse_zip import parse_zip
 from src.extractors.destatis_extractor.parse_csv import parse_csv
 
@@ -71,10 +70,7 @@ def extract(table_id : str, year_start : int = 2020, year_end : int = 2025, lang
     
     logger = logging.get_logger(__name__)
 
-
-    settings_file = paths.dir_config / 'settings.json'
-    with open(settings_file, 'r') as f:
-        config = json.load(f)
+    config = get_settings.get()
 
     api_access_url = config['api']['base_url']
     api_access_token = os.getenv('DESTATIS_ACCESS_TOKEN')
