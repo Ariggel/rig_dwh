@@ -1,47 +1,50 @@
+/*
 /*===========================================================================================================
 			HEADER
 =============================================================================================================*/
 /*
 Basic documentary
 --------------------------------------------------------------------------------------------------------------
-Name:			DB_DWH.SCHEME.RUN_TABLE
-Object:			
+Name:			DB_DWH.RAW.RUN_MAP_<TABLE>
+Object:			Procedure
 Developer:		Sascha Klein
-Creation Date:	
-Topic:			
-Sources:		
+Creation Date:	<DATE>
+Topic:			Standardized mapping of <TOPIC>
+Sources:		Static mapping definition
 
 Business Definition
 --------------------------------------------------------------------------------------------------------------
-
+<DEFINITION>
 
 Business Rules
 --------------------------------------------------------------------------------------------------------------
+- <RULE 1>
 
 Logic
 --------------------------------------------------------------------------------------------------------------
-1. 
+1. <STEP 1>
 
 Result
 --------------------------------------------------------------------------------------------------------------
-Result description.
-- [VARIABLE]         Description
+Static reference table containing <CONTENT>
+
+ [COLUMN]      <DATA_TYPE>             -- <DESCRIPTION>
 
 Pipelines
 --------------------------------------------------------------------------------------------------------------
-- Currently no dedicated orchestration pipeline assigned.
+- PIPELINE_INTERNAL_MAPPING
 
 Dependencies
 --------------------------------------------------------------------------------------------------------------
 Source Objects:
-- 
+- No source objects assigned (static mapping definition).
 
 Target Objects:
-- DB_DWH.SCHEME.TABLE
+- DB_DWH.RAW.MAP_<TABLE>
 
 Versioning
 --------------------------------------------------------------------------------------------------------------
--  | Sascha Klein | v 1.0.0
+- <DATE> | Sascha Klein | v 1.0.0
 --- Initial version
 
 */
@@ -52,21 +55,23 @@ Versioning
 --------------------------------------------------------------------------------------------------------------
 USE DB_DWH;
 
-/*DROP PROCEDURE IF EXISTS SCHEME.RUN_TABLE;
+DROP PROCEDURE IF EXISTS RAW.RUN_MAP_DWH_<TABLE>;
 GO
 
-CREATE PROCEDURE SCHEME.RUN_TABLE (
+CREATE PROCEDURE RAW.RUN_MAP_DWH_<TABLE> (
 	@DEFAULT NVARCHAR(100)
 )
 AS
-BEGIN*/
+BEGIN
+
 --Table definition
 --------------------------------------------------------------------------------------------------------------
-/*DROP TABLE IF EXISTS DB_DWH.SCHEME.TABLE
-
-CREATE TABLE DB_DWH.SCHEME.TABLE (
-	 [VARIABLE] 		DATA_TYPE
-)*/
+IF OBJECT_ID('DB_DWH.RAW.MAP_DWH_<TABLE>') IS NULL
+BEGIN
+CREATE TABLE DB_DWH.RAW.MAP_DWH_<TABLE> (
+	 <[COLUMN]>		<DATA_TYPE>				-- <DESCRIPTION>
+)
+END;
 
 --Parameter definition
 --------------------------------------------------------------------------------------------------------------
@@ -79,40 +84,42 @@ CREATE TABLE DB_DWH.SCHEME.TABLE (
 =============================================================================================================*/
 --Mapping sources
 --------------------------------------------------------------------------------------------------------------
---Table:	#TABLE
---Purpose:	
---Logic:	
-/*DROP TABLE IF EXISTS #TABLE
-	SELECT
-		
-	INTO #TABLE
-	FROM
-CREATE CLUSTERED INDEX IX_TABLE ON #TABLE([COLUMN])*/
+-- Static mapping table. No external data sources required.
 
 --Data sources
 --------------------------------------------------------------------------------------------------------------
---Table:	#TABLE
---Purpose:	
---Logic:	
-/*DROP TABLE IF EXISTS #TABLE
-	SELECT
-		
-	INTO #TABLE
-	FROM*/
+-- Static mapping table. No external data sources required.
 
 /*===========================================================================================================
 			TRANSFORMATIONS
 =============================================================================================================*/
---Table:	
---Purpose:	
---Logic:   	- 
---         	- 
+--Table:    Resultset
+--Purpose:  <PURPOSE>
+--Logic:    - <STEP 1>
+--          - <STEP 2>
+INSERT INTO DB_DWH.RAW.MAP_DWH_<TABLE> (
+	 <[COLUMN]>
+)
 
-	
-/*INSERT INTO DB_DWH.SCHEME.TABLE*/
+SELECT
+	 TEMP.[_ID]
+	,TEMP.[_NAME]
+	,'INTERNAL_MAPPING'	AS [STAMP_SOURCE]
+    ,GETDATE()			AS [STAMP_TIME]
+FROM (
+VALUES 
+	 (1,'')
+) TEMP([_ID],[_NAME])
 
-/*SELECT
+WHERE NOT EXISTS (
+	SELECT 1
+	FROM DB_DWH.RAW.MAP_DWH_<TABLE> AS SRC
+	WHERE SRC.[_NAME] = TEMP.[_NAME]
+)
 
-FROM*/
+END;
+*/
 
---END;
+
+
+
