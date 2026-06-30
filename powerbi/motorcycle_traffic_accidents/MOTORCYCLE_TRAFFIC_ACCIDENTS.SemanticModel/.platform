@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "MOTORCYCLE_TRAFFIC_ACCIDENTS"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e57d6851-53bc-4346-bf5a-38ab15f4e8fa"
+  }
+}
