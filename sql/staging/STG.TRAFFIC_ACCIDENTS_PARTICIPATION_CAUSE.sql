@@ -135,7 +135,7 @@ DROP TABLE IF EXISTS #SRC_DATA_TRAFFIC_ACCIDENTS_PARTICIPATION_CAUSE
         ,SRC.[2_variable_attribute_label] -- Nvarchar value for the referring country. Here only germany since its a destatis data set about german traffic accidents
         ,SRC.[3_variable_attribute_label] -- Identifier for the participation of the party of fault in an accident (e.g. Kraftrat mit amtlichem Kennzeichen)
         ,SRC.[4_variable_attribute_label] -- Cause of the traffic accidents (e.g. Alkoholeinfluss, Abstandsfehler)
-        ,SRC.[value] -- Number of vehicle operators involved in traffic accidents
+        ,SRC.[value] -- Number of injured/damaged vehicle operators and injured pedestrians involved in traffic accidents
 	INTO #SRC_DATA_TRAFFIC_ACCIDENTS_PARTICIPATION_CAUSE
 	FROM RAW.DATA_DESTATIS_ACCIDENTS_PARTICIPATION_CAUSE AS SRC
 
@@ -156,10 +156,11 @@ SELECT
 	,TRY_CAST(SRC.[2_variable_attribute_label] AS NVARCHAR(100))    AS [COUNTRY_NAME]
     ,TRY_CAST(SRC.[time] AS INT)                                    AS [YEAR]
     ,#SRC_MAP_MONTH.[MONTH]
-    ,SRC.[value]                                                    AS [PARTICIPANTS]
+    ,ISNULL(TRY_CAST(SRC.[value] AS INT),0)                         AS [PARTICIPANTS]
     ,'DESTATIS'                                                     AS [STAMP_SOURCE]
     ,GETDATE()                                                      AS [STAMP_TIME]
 FROM #SRC_DATA_TRAFFIC_ACCIDENTS_PARTICIPATION_CAUSE AS SRC
 LEFT JOIN #SRC_MAP_MONTH ON #SRC_MAP_MONTH.[MONTH_NAME] = SRC.[1_variable_attribute_code]
+WHERE ISNULL(TRY_CAST(SRC.[value] AS INT),0) <> 0 -- Eliminating non-populated records
 
 END;
