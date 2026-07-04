@@ -1,12 +1,16 @@
 {
-  "api_destatis"  : {
-  "base_url"      : "https://www-genesis.destatis.de/genesisWS/rest/2020/",
-  "timeout"       : 30
-  },
+  "api_destatis"        : {
+  "base_url"            : "https://www-genesis.destatis.de/genesisWS/rest/2020/",
+  "suffix_data"         : "data/tablefile/",
+  "suffix_resultlist"   : "catalogue/results/",
+  "timeout"             : 15
+  },                    
 
-  "api_ldbnrw"    : {
-  "base_url"      : "https://www.landesdatenbank.nrw.de/ldbnrwws/rest/2020",
-   "timeout"      : 30
+  "api_ldbnrw"          : {
+  "base_url"            : "https://www.landesdatenbank.nrw.de/ldbnrwws/rest/2020",
+  "suffix_job"          : "catalogue/jobs/",
+  "suffix_resultlist"   : "catalogue/results/", 
+  "timeout"             : 15
   },
   "sql": {
     "server": ".\\MSSQLSERVER01",

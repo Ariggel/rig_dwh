@@ -1,6 +1,5 @@
 
 import pandas
-from src.extractors import destatis_extractor
 from config.destatis_data import TABLE_CONFIG
 from src.utilities import logging, exceptions
 
@@ -40,7 +39,7 @@ def run() -> dict[str, pandas.DataFrame]:
         logger.info('Starting data extraction for table ID: %s, years: %d-%d, language: %s', table_id, year_start, year_end, language_data)
         
         try:
-            data_frame = destatis_extractor.extract(table_id, year_start, year_end, language_data)
+            data_frame = bin.extract(table_id, year_start, year_end, language_data)
             logger.info('Data extraction completed for table ID: %s', table_id)
         except exceptions.DataDownloadError as e:
             logger.error('Data extraction failed for table ID: %s with error: %s', table_id, e)
