@@ -176,7 +176,7 @@ SELECT
     ,#SRC_MAP_GERMAN_STATES.[STATE_NAME]
     ,TRY_CAST(SRC.[time] AS INT)                                    AS [YEAR]
     ,#SRC_MAP_MONTH.[MONTH]
-    ,SRC.[value]                                                    AS [ACCIDENTS]
+    ,ISNULL(TRY_CAST(SRC.[value] AS INT),0)                         AS [ACCIDENTS]
     ,'DESTATIS'                                                     AS [STAMP_SOURCE]
     ,GETDATE()                                                      AS [STAMP_TIME]
 FROM #SRC_DATA_ACCIDENTS AS SRC
@@ -184,7 +184,8 @@ LEFT JOIN #SRC_MAP_MONTH ON #SRC_MAP_MONTH.[MONTH_NAME] = SRC.[1_variable_attrib
 LEFT JOIN #SRC_MAP_GERMAN_STATES ON #SRC_MAP_GERMAN_STATES.[STATE_NAME] = SRC.[2_variable_attribute_label]
 WHERE   SRC.[3_variable_attribute_label] <> 'Insgesamt' -- Source dataset contains sum rows that need to be deleted since measures will be calculated in DAX later on
 AND     SRC.[4_variable_attribute_label] <> 'Insgesamt' -- Source dataset contains sum rows that need to be deleted since measures will be calculated in DAX later on
-	
+AND     ISNULL(TRY_CAST(SRC.[value] AS INT),0) <> 0 -- Eliminating non-populated records
+
 END;
 
 
