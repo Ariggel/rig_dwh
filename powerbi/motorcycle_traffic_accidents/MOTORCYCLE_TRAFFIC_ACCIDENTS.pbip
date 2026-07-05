@@ -4,7 +4,7 @@
   "artifacts": [
     {
       "report": {
-        "path": "MOTORCYCLE_TRAFFIC_ACCIDENTS.Report"
+        "path": "motorcycle_traffic_accidents.Report"
       }
     }
   ],

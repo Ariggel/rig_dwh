@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Report",
-    "displayName": "MOTORCYCLE_TRAFFIC_ACCIDENTS"
+    "displayName": "motorcycle_traffic_accidents"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "3826be80-a355-4ca0-82fa-c3faf165fe5c"
+    "logicalId": "4021f954-2675-42fa-a030-a45625dfd462"
   }
 }
