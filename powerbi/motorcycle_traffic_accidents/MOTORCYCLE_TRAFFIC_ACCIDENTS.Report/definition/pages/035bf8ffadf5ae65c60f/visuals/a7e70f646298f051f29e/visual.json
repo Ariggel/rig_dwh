@@ -1,0 +1,159 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "a7e70f646298f051f29e",
+  "position": {
+    "x": 0,
+    "y": 487.35945485519591,
+    "z": 2,
+    "height": 232.23168654173764,
+    "width": 1280,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_NAME"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_NAME",
+              "nativeQueryRef": "AGE_NAME",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_ID"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_ID",
+              "nativeQueryRef": "AGE_ID",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                        }
+                      },
+                      "Property": "PARTICIPANTS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.PARTICIPANTS)",
+              "nativeQueryRef": "Summe von PARTICIPANTS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_DIM_AGE"
+                  }
+                },
+                "Property": "AGE_NAME"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_DIM_AGE"
+                  }
+                },
+                "Property": "AGE_ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "54bea02b1f611b76d4e9",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                  }
+                },
+                "Property": "PARTICIPANTS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "97e80a07a47119b1d4c9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d7ff7af5f332e5189a30",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_ID"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

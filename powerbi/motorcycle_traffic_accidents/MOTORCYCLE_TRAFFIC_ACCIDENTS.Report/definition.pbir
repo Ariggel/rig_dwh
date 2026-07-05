@@ -3,7 +3,7 @@
   "version": "4.0",
   "datasetReference": {
     "byPath": {
-      "path": "../MOTORCYCLE_TRAFFIC_ACCIDENTS.SemanticModel"
+      "path": "../motorcycle_traffic_accidents.SemanticModel"
     }
   }
 }
