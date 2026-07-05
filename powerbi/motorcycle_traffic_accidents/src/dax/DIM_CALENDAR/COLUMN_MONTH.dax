@@ -1,0 +1,4 @@
+MONTH = 
+    MONTH(
+         DIM_CALENDAR[DATETIME]
+        )
