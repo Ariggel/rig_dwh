@@ -1,0 +1,7 @@
+DATE = 
+    DATE(
+         DIM_CALENDAR[YEAR]
+        ,DIM_CALENDAR[MONTH]
+        ,DAY(DIM_CALENDAR[DATETIME]
+    )
+)
