@@ -1,0 +1,4 @@
+YEAR = 
+    YEAR(
+         DIM_CALENDAR[DATETIME]
+        )
