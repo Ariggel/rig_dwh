@@ -1,0 +1,52 @@
+table DIM_CALENDAR
+	lineageTag: 441b7a21-59e5-4a65-b751-fffff22dd6e0
+
+	column DATETIME
+		formatString: General Date
+		lineageTag: 83ca8b3e-8138-445a-abae-aa71e0556b2d
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 8dbbafc9-5e89-466e-9c4b-d904c615ba17
+			defaultHierarchy: LocalDateTable_5ecb64dc-f490-4f43-a817-0e081b536ba0.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTH = MONTH(DIM_CALENDAR[DATETIME])
+		formatString: 0
+		lineageTag: 706750e1-87f5-49d4-9097-217e72692dcc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR = YEAR(DIM_CALENDAR[DATETIME])
+		formatString: 0
+		lineageTag: 9cedee43-202f-42c7-ac49-35f28e66e486
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE = DATE(DIM_CALENDAR[YEAR],DIM_CALENDAR[MONTH],DAY(DIM_CALENDAR[DATETIME]))
+		formatString: dd/mm/yyyy
+		lineageTag: 1dc857b2-05ec-45cd-97eb-c7b6e8a8c52e
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 04a2171b-1ebb-4b4c-8cf9-e495c2fd7c51
+			defaultHierarchy: LocalDateTable_49e20891-3945-47d8-b733-b1a8934016df.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition DIM_CALENDAR = calculated
+		mode: import
+		source = CALENDAR(DATE(MIN('CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF'[YEAR]),MIN('CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF'[MONTH]),1),TODAY())
+
+	annotation PBI_Id = e7a760efa81e418abddabf45fee07a16
+

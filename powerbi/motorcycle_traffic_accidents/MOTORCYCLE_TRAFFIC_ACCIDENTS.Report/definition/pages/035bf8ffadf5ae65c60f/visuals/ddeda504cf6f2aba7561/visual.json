@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "ddeda504cf6f2aba7561",
+  "position": {
+    "x": 556.04770017035776,
+    "y": 263.85008517887564,
+    "z": 3,
+    "height": 223.50936967632026,
+    "width": 723.95229982964224,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_ROAD_ENVIRONMENT"
+                    }
+                  },
+                  "Property": "ROAD_ENVIRONMENT_NAME"
+                }
+              },
+              "queryRef": "CORE_DIM_ROAD_ENVIRONMENT.ROAD_ENVIRONMENT_NAME",
+              "nativeQueryRef": "ROAD_ENVIRONMENT_NAME",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                        }
+                      },
+                      "Property": "PARTICIPANTS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.PARTICIPANTS)",
+              "nativeQueryRef": "Summe von PARTICIPANTS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                      }
+                    },
+                    "Property": "PARTICIPANTS"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a1ae8469cb5586387ac0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_ROAD_ENVIRONMENT"
+              }
+            },
+            "Property": "ROAD_ENVIRONMENT_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "48474bb7be26eb638885",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                  }
+                },
+                "Property": "PARTICIPANTS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

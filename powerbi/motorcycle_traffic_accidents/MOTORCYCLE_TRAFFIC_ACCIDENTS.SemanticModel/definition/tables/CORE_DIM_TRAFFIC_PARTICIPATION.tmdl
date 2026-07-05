@@ -1,0 +1,54 @@
+table CORE_DIM_TRAFFIC_PARTICIPATION
+	lineageTag: bc739d9f-eb90-4fe2-8b1b-6a1de6d55f50
+
+	column TRAFFIC_PARTICIPATION_ID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d7d55d22-3677-428c-a0ea-36dc2d6ba39c
+		summarizeBy: none
+		sourceColumn: TRAFFIC_PARTICIPATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAFFIC_PARTICIPATION_NAME
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 28c1a7f0-3c26-4c91-b605-c1bd794564d7
+		summarizeBy: none
+		sourceColumn: TRAFFIC_PARTICIPATION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_TIME
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 6938f393-953c-4ad2-a0f2-760401942418
+		summarizeBy: none
+		sourceColumn: STAMP_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_SOURCE
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: d865ee9e-3402-4837-b170-92dc13e255c6
+		summarizeBy: none
+		sourceColumn: STAMP_SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CORE_DIM_TRAFFIC_PARTICIPATION = m
+		mode: directQuery
+		source =
+				let
+				    Quelle = Sql.Databases(".\MSSQLSERVER01"),
+				    DB_DWH = Quelle{[Name="DB_DWH"]}[Data],
+				    CORE_DIM_TRAFFIC_PARTICIPATION = DB_DWH{[Schema="CORE",Item="DIM_TRAFFIC_PARTICIPATION"]}[Data]
+				in
+				    CORE_DIM_TRAFFIC_PARTICIPATION
+
+	annotation PBI_ResultType = Table
+
