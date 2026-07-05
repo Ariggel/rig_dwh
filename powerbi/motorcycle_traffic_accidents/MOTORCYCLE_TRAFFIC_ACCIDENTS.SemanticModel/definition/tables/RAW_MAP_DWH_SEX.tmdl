@@ -1,0 +1,64 @@
+table RAW_MAP_DWH_SEX
+	lineageTag: 97d16d7a-deb0-4c33-bca5-b24b7af38338
+
+	column SEX_ID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4cbfe100-4a16-47c5-803d-414ba67ced98
+		summarizeBy: none
+		sourceColumn: SEX_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEX_NAME
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: e90f4c26-bf56-4da1-b7f7-18931d8dfad8
+		summarizeBy: none
+		sourceColumn: SEX_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEX_NAME_DESTATIS
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: d296a176-80d5-4f6c-8e74-f6b3b64dc114
+		summarizeBy: none
+		sourceColumn: SEX_NAME_DESTATIS
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_TIME
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 30071cd3-b6cf-43dd-a749-09b2ee0fb518
+		summarizeBy: none
+		sourceColumn: STAMP_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_SOURCE
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 787b8528-61bc-4fc2-b894-db13d1199fe6
+		summarizeBy: none
+		sourceColumn: STAMP_SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RAW_MAP_DWH_SEX = m
+		mode: directQuery
+		source =
+				let
+				    Quelle = Sql.Databases(".\MSSQLSERVER01"),
+				    DB_DWH = Quelle{[Name="DB_DWH"]}[Data],
+				    RAW_MAP_DWH_SEX = DB_DWH{[Schema="RAW",Item="MAP_DWH_SEX"]}[Data]
+				in
+				    RAW_MAP_DWH_SEX
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

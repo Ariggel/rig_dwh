@@ -1,0 +1,54 @@
+table CORE_DIM_ROAD_ENVIRONMENT
+	lineageTag: 43707c75-3451-492f-8a5c-f64f0f6a8e67
+
+	column ROAD_ENVIRONMENT_ID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 37689308-8337-46c8-bfc0-2bda461a1e7a
+		summarizeBy: none
+		sourceColumn: ROAD_ENVIRONMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_ENVIRONMENT_NAME
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 2f427da6-1dd4-41be-a347-da45371d8367
+		summarizeBy: none
+		sourceColumn: ROAD_ENVIRONMENT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_TIME
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 4a303319-5813-463c-a0b2-3b9301c1da71
+		summarizeBy: none
+		sourceColumn: STAMP_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_SOURCE
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 5e08d7c1-84c9-4f2e-b70f-9a848c1ff8ef
+		summarizeBy: none
+		sourceColumn: STAMP_SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CORE_DIM_ROAD_ENVIRONMENT = m
+		mode: directQuery
+		source =
+				let
+				    Quelle = Sql.Databases(".\MSSQLSERVER01"),
+				    DB_DWH = Quelle{[Name="DB_DWH"]}[Data],
+				    CORE_DIM_ROAD_ENVIRONMENT = DB_DWH{[Schema="CORE",Item="DIM_ROAD_ENVIRONMENT"]}[Data]
+				in
+				    CORE_DIM_ROAD_ENVIRONMENT
+
+	annotation PBI_ResultType = Table
+
