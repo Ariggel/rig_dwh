@@ -26,7 +26,13 @@ Logic
 Result
 --------------------------------------------------------------------------------------------------------------
 Result description.
- [COLUMN]      <DATA_TYPE>             -- <DESCRIPTION>
+ [FACT_ID]				INT				IDENTITY(1,1) NOT NULL PRIMARY KEY
+,[DIM_ID]				INT				-- 
+,[VALUE]				<DATA_TYPE>		--
+,[STAMP_SOURCE]			NVARCHAR(100)	-- Source definition, here: STAGING
+,[STAMP_SOURCE_STG]		NVARCHAR(100)	-- Source definition of staged data, here: 
+,[STAMP_TIME]			DATETIME		-- Loading time
+,[STAMP_TIME_STG]		DATETIME		-- Loading time of the staged data
 
 Pipelines
 --------------------------------------------------------------------------------------------------------------
@@ -66,8 +72,22 @@ BEGIN*/
 /*DROP TABLE IF EXISTS DB_DWH.CORE.TABLE
 
 CREATE TABLE DB_DWH.CORE.TABLE (
-	 [VARIABLE] 		DATA_TYPE
-)*/
+	 [FACT_ID]				INT				IDENTITY(1,1) NOT NULL PRIMARY KEY
+	,[DIM_ID]				INT				-- 
+	,[DIM_ID_2]				INT				--
+	,[VALUE]				<DATA_TYPE>		--
+	,[STAMP_SOURCE]			NVARCHAR(100)	-- Source definition, here: STAGING
+	,[STAMP_SOURCE_STG]		NVARCHAR(100)	-- Source definition of staged data, here: 
+	,[STAMP_TIME]			DATETIME		-- Loading time
+	,[STAMP_TIME_STG]		DATETIME		-- Loading time of the staged data
+)
+
+UNIQUE
+(
+     [DIM_ID]
+	,[DIM_ID_2]
+)
+*/
 
 --Parameter definition
 --------------------------------------------------------------------------------------------------------------
@@ -78,7 +98,7 @@ CREATE TABLE DB_DWH.CORE.TABLE (
 /*===========================================================================================================
 			SOURCES
 =============================================================================================================*/
---Mapping sources
+--Dimension sources
 --------------------------------------------------------------------------------------------------------------
 --Table:	#TABLE
 --Purpose:	

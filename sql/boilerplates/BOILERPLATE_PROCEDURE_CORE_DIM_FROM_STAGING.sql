@@ -73,7 +73,7 @@ CREATE TABLE DB_DWH.CORE.DIM_<TABLE> (
     ,[_NAME]                NVARCHAR(100)   -- Static DWH sex label (e.g. Unbekannt, Männlich)
     ,[_NAME_DESTATIS]       NVARCHAR(100)   -- DESTATIS sex attribute label (e.g. Ohne Angabe, männlich)
 	,[STAMP_TIME]	        DATETIME		-- Loading time
-	,[STAMP_SOURCE]         NVARCHAR(100)	-- Source definition, here: INTERNAL_MAPPING
+	,[STAMP_SOURCE]         NVARCHAR(100)	-- Source definition, here: STAGING
 )
 END;
 
