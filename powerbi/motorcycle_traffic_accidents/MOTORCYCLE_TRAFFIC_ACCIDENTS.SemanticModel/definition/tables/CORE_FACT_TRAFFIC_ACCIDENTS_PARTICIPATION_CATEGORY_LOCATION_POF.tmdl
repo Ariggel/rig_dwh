@@ -1,0 +1,164 @@
+table CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF
+	lineageTag: b132e761-9276-4fbc-8f97-5824bb2d76c8
+
+	measure 'Particpant at fault' = SUM(CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF[PARTICIPANTS])
+		formatString: 0
+		lineageTag: 38d7c86d-5e10-435f-b473-f0a5d3c2c6f0
+
+	measure 'Participant at fault rate' = CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF[Particpant at fault]/ CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS[Particpants overall]
+		lineageTag: d6855437-9081-402a-8523-f35be392f7f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FACT_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ccf061c-9188-48b6-9104-090441f30e7f
+		summarizeBy: count
+		sourceColumn: FACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGE_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 174c46df-e5bb-4e76-9421-bed1184c2197
+		summarizeBy: none
+		sourceColumn: AGE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROAD_ENVIRONMENT_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0227ce9e-d208-477b-9ebc-e6007f4273cd
+		summarizeBy: none
+		sourceColumn: ROAD_ENVIRONMENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAFFIC_PARTICIPATION_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: ffad1b5d-facd-43b0-a3cf-829de033b539
+		summarizeBy: none
+		sourceColumn: TRAFFIC_PARTICIPATION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEX_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 685223d3-14d9-4893-9ade-fcc7f4c9171d
+		summarizeBy: none
+		sourceColumn: SEX_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAFFIC_ACCIDENT_CATEGORY_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 36517217-1826-4ce8-90e9-18a8ccc12ea8
+		summarizeBy: none
+		sourceColumn: TRAFFIC_ACCIDENT_CATEGORY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR
+		dataType: int64
+		formatString: 0
+		lineageTag: d99fc2bf-a186-4c11-bd4b-80fe0caf5c5b
+		summarizeBy: sum
+		sourceColumn: YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column MONTH
+		dataType: int64
+		formatString: 0
+		lineageTag: b4419e01-0742-42a5-a67b-070b19bf8f52
+		summarizeBy: sum
+		sourceColumn: MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column PARTICIPANTS
+		dataType: int64
+		formatString: 0
+		lineageTag: dc91a05c-88bf-4d9f-9624-0d5fc55f297a
+		summarizeBy: sum
+		sourceColumn: PARTICIPANTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_SOURCE
+		dataType: string
+		lineageTag: 4dcfcdc6-72dd-4c15-a2e1-90dc3da775cc
+		summarizeBy: none
+		sourceColumn: STAMP_SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_SOURCE_STG
+		dataType: string
+		lineageTag: 8a3781a1-8130-4971-bd6a-f4600fad8b76
+		summarizeBy: none
+		sourceColumn: STAMP_SOURCE_STG
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4ec8db7c-9e02-4b33-8687-09f7f6c9c437
+		summarizeBy: none
+		sourceColumn: STAMP_TIME
+
+		variation Variation
+			isDefault
+			relationship: a4358f47-6f6e-41a2-998a-b30756d3afdf
+			defaultHierarchy: LocalDateTable_885c5a99-16a6-4966-9823-3d5d3439cfaf.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_TIME_STG
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5fba593a-885a-418d-8a4c-039bbea811af
+		summarizeBy: none
+		sourceColumn: STAMP_TIME_STG
+
+		variation Variation
+			isDefault
+			relationship: 3ba3e68f-ef73-49b3-89a7-e504b0f5aaf0
+			defaultHierarchy: LocalDateTable_3482a9dc-7f9a-4689-af59-49c33b42020f.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column EOMONTH
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 34be0034-2e0b-489c-b451-47ff496d9afc
+		summarizeBy: none
+		sourceColumn: EOMONTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF = m
+		mode: import
+		source =
+				let
+				    Quelle = Sql.Databases(".\MSSQLSERVER01"),
+				    DB_DWH = Quelle{[Name="DB_DWH"]}[Data],
+				    CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF = DB_DWH{[Schema="CORE",Item="FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"]}[Data],
+				    #"Hinzugefügte benutzerdefinierte Spalte" = Table.AddColumn(CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF, "EOMONTH", each Date.EndOfMonth(Date.From(#date([YEAR],[MONTH],1)))),
+				    #"Geänderter Typ" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte",{{"EOMONTH", type date}})
+				in
+				    #"Geänderter Typ"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

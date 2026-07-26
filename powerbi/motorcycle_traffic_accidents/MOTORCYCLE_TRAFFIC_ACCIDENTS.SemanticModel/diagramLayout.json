@@ -1,0 +1,122 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 309
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 860,
+            "y": 312.75
+          },
+          "nodeIndex": "DIM_CALENDAR",
+          "nodeLineageTag": "441b7a21-59e5-4a65-b751-fffff22dd6e0",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 162,
+            "y": 478.25
+          },
+          "nodeIndex": "CORE_DIM_AGE",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 259,
+            "y": 894.25
+          },
+          "nodeIndex": "CORE_DIM_ROAD_ENVIRONMENT",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 313.25
+          },
+          "nodeIndex": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1161,
+            "y": 544.25
+          },
+          "nodeIndex": "CORE_DIM_TRAFFIC_PARTICIPATION",
+          "nodeLineageTag": "bc739d9f-eb90-4fe2-8b1b-6a1de6d55f50",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 900,
+            "y": 834.25
+          },
+          "nodeIndex": "RAW_MAP_DWH_SEX",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 554,
+            "y": 532.5
+          },
+          "nodeIndex": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF",
+          "nodeLineageTag": "b132e761-9276-4fbc-8f97-5824bb2d76c8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 812,
+            "y": 538
+          },
+          "nodeIndex": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS",
+          "nodeLineageTag": "4bc85a20-4df6-4004-9915-5d66c50acdf0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Alle Tabellen",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Alle Tabellen",
+  "defaultDiagram": "Alle Tabellen"
+}

@@ -1,0 +1,215 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "fc9c4227f297016c0af2",
+  "position": {
+    "x": 523.63636363636363,
+    "y": 360.06861063464839,
+    "z": 4,
+    "height": 328.23327615780448,
+    "width": 747.581475128645,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_NAME"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_NAME",
+              "nativeQueryRef": "Alter",
+              "active": true,
+              "displayName": "Alter"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_ID"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_ID",
+              "nativeQueryRef": "AGE_ID",
+              "active": false
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                    }
+                  },
+                  "Property": "Participant at fault rate"
+                }
+              },
+              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Participant at fault rate",
+              "nativeQueryRef": "Schuldquote",
+              "displayName": "Schuldquote"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_DIM_AGE"
+                  }
+                },
+                "Property": "AGE_NAME"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_DIM_AGE"
+                  }
+                },
+                "Property": "AGE_ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFCFC'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Schuldquote nach Alter'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "df37b6b7a4d3889e4422",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_ID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d3d98a34754e6be6e13c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "08c3e6f7979688f43edd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+              }
+            },
+            "Property": "Participant at fault rate"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

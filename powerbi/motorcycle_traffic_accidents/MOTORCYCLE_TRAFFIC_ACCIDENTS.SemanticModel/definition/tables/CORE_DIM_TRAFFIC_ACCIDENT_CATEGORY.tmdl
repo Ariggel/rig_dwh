@@ -1,0 +1,58 @@
+table CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY
+	lineageTag: 363304ed-cc80-4ce2-8996-547efc55e6d3
+
+	column TRAFFIC_ACCIDENT_CATEGORY_ID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9b614edc-25a2-4fbd-b99e-1c658ce9ce82
+		summarizeBy: none
+		sourceColumn: TRAFFIC_ACCIDENT_CATEGORY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAFFIC_ACCIDENT_CATEGORY_NAME
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 5192c923-21b5-41b7-ae3b-d18279f6044f
+		summarizeBy: none
+		sourceColumn: TRAFFIC_ACCIDENT_CATEGORY_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_TIME
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 51823b3d-cddc-411f-9694-3490ce648477
+		summarizeBy: none
+		sourceColumn: STAMP_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column STAMP_SOURCE
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 776a378a-6892-413c-b2fc-6189b06a6f98
+		summarizeBy: none
+		sourceColumn: STAMP_SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY = m
+		mode: directQuery
+		source = ```
+				let
+				     SqlServer = Sql.Databases(".\MSSQLSERVER01")               // Select the server ip for the desired sql server
+				    ,Database = SqlServer{[Name="DB_DWH"]}[Data]                // Select the database
+				    ,Dataset = Database{[Schema="CORE",Item="DIM_TRAFFIC_ACCIDENT_CATEGORY"]}[Data]     // Select the dataset to download
+				    
+				in
+				    Dataset
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
