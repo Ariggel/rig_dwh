@@ -1,0 +1,9 @@
+DIM_CALENDAR = 
+    CALENDAR(
+         DATE(
+             MIN('CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF'[YEAR])   -- Pick the minimum year of the fact table as begin of the calender
+            ,MIN('CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF'[MONTH])  -- Pick the minimum month of the fact table as begin of the calender
+            ,1                                                                              -- Pick the first day for selected year and month as begin of the calender
+        )
+        ,TODAY()    -- Calculate the calender up until today
+    )

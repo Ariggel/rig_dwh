@@ -1,5 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+<<<<<<< HEAD
   "name": "035bf8ffadf5ae65c60f",
   "displayName": "Seite 1",
   "displayOption": "FitToPage",
@@ -47,4 +48,16 @@
       "type": "DataFilter"
     }
   ]
+=======
+<<<<<<<< HEAD:powerbi/motorcycle_traffic_accidents/MOTORCYCLE_TRAFFIC_ACCIDENTS.Report/definition/pages/571ee0e6628f9df9cb91/page.json
+  "name": "571ee0e6628f9df9cb91",
+  "displayName": "Seite 2",
+========
+  "name": "035bf8ffadf5ae65c60f",
+  "displayName": "Seite 1",
+>>>>>>>> main:powerbi/motorcycle_traffic_accidents/MOTORCYCLE_TRAFFIC_ACCIDENTS.Report/definition/pages/035bf8ffadf5ae65c60f/page.json
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+>>>>>>> main
 }
