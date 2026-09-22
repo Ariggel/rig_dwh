@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "ddeda504cf6f2aba7561",
+  "name": "90aee4c2044a953c4000",
   "position": {
-    "x": 783.951367781155,
-    "y": 53.495440729483285,
-    "z": 3,
-    "height": 279.14893617021278,
-    "width": 487.29483282674772,
-    "tabOrder": 3
+    "x": 13.173241852487136,
+    "y": 360.06861063464839,
+    "z": 6,
+    "height": 328.23327615780448,
+    "width": 487.40994854202404,
+    "tabOrder": 6
   },
   "visual": {
-    "visualType": "donutChart",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CORE_DIM_ROAD_ENVIRONMENT"
+                      "Entity": "RAW_MAP_DWH_SEX"
                     }
                   },
-                  "Property": "ROAD_ENVIRONMENT_NAME"
+                  "Property": "SEX_NAME"
                 }
               },
-              "queryRef": "CORE_DIM_ROAD_ENVIRONMENT.ROAD_ENVIRONMENT_NAME",
-              "nativeQueryRef": "Ortslage",
+              "queryRef": "RAW_MAP_DWH_SEX.SEX_NAME",
+              "nativeQueryRef": "Geschlecht",
               "active": true,
-              "displayName": "Ortslage"
+              "displayName": "Geschlecht"
             }
           ]
         },
@@ -106,7 +106,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Schuldquote nach Ortslage'"
+                  "Value": "'Schuldquote nach Geschlecht'"
                 }
               }
             }
@@ -168,21 +168,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "15d94633dff3b71682a1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CORE_DIM_ROAD_ENVIRONMENT"
-              }
-            },
-            "Property": "ROAD_ENVIRONMENT_NAME"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "03f47c607c32f0b24af4",
+        "name": "6d241a9ab55e89169180",
         "field": {
           "Measure": {
             "Expression": {
@@ -194,6 +180,66 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "76ced2779e7bd5ad8045",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "RAW_MAP_DWH_SEX"
+              }
+            },
+            "Property": "SEX_NAME"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "r",
+              "Entity": "RAW_MAP_DWH_SEX",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "r"
+                          }
+                        },
+                        "Property": "SEX_NAME"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Männlich'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Weiblich'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
       }
     ]
   }

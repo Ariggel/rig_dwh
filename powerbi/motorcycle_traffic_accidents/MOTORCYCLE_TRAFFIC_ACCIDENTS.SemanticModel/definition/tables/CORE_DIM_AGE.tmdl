@@ -42,13 +42,17 @@ table CORE_DIM_AGE
 
 	partition CORE_DIM_AGE = m
 		mode: directQuery
-		source =
+		source = ```
 				let
-				    Quelle = Sql.Databases(".\MSSQLSERVER01"),
-				    DB_DWH = Quelle{[Name="DB_DWH"]}[Data],
-				    CORE_DIM_AGE = DB_DWH{[Schema="CORE",Item="DIM_AGE"]}[Data]
+				     SqlServer = Sql.Databases(".\MSSQLSERVER01")               // Select the server ip for the desired sql server
+				    ,Database = SqlServer{[Name="DB_DWH"]}[Data]                // Select the database
+				    ,Dataset = Database{[Schema="CORE",Item="DIM_AGE"]}[Data]     // Select the dataset to download
+				    
 				in
-				    CORE_DIM_AGE
+				    Dataset
+				```
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

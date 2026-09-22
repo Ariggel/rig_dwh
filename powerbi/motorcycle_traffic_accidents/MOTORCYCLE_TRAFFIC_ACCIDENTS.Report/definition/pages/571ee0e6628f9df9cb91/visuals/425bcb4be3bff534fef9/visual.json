@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "ba9b006506db4555724d",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "425bcb4be3bff534fef9",
   "position": {
-    "x": 13.617021276595745,
-    "y": 134.22492401215806,
-    "z": 0,
-    "height": 198.419452887538,
-    "width": 487.29483282674772,
-    "tabOrder": 0
+    "x": 9.8126064735945473,
+    "y": 333.62862010221465,
+    "z": 1,
+    "height": 324.90630323679727,
+    "width": 1252.7427597955707,
+    "tabOrder": 1
   },
   "visual": {
     "visualType": "lineChart",
@@ -27,9 +27,8 @@
                 }
               },
               "queryRef": "DIM_CALENDAR.YEAR",
-              "nativeQueryRef": "Jahr",
-              "active": true,
-              "displayName": "Jahr"
+              "nativeQueryRef": "Summe von YEAR",
+              "active": true
             }
           ]
         },
@@ -47,8 +46,7 @@
                 }
               },
               "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Particpant at fault",
-              "nativeQueryRef": "Hauptschuld Motorrad",
-              "displayName": "Hauptschuld Motorrad"
+              "nativeQueryRef": "Particpant at fault"
             },
             {
               "field": {
@@ -62,8 +60,7 @@
                 }
               },
               "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS.Particpants overall",
-              "nativeQueryRef": "Unfälle mit Motorrad gesamt",
-              "displayName": "Unfälle mit Motorrad gesamt"
+              "nativeQueryRef": "Particpants overall"
             }
           ]
         }
@@ -87,91 +84,66 @@
         "isDefaultSort": true
       }
     },
-    "objects": {
-      "valueAxis": [
-        {
-          "properties": {
-            "axisStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'showUnitOnly'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "background": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFCFC'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "border": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "15D"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": -0.5
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Unfälle & Hauptschuldige Motorradfahrer'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "23348f8a8ad3cb26bb32",
+        "name": "c225c311fe43742bab20",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
+              }
+            },
+            "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "c",
+              "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "c"
+                          }
+                        },
+                        "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Sonst. Unfälle unter dem Einfluss berausch. Mittel'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "52ba7b4a4b0e0a1bd6f8",
         "field": {
           "Column": {
             "Expression": {
@@ -185,7 +157,7 @@
         "type": "Advanced"
       },
       {
-        "name": "bd2c19819f1dd121edcd",
+        "name": "e6cdfd786a7e74b7533e",
         "field": {
           "Measure": {
             "Expression": {
@@ -199,7 +171,7 @@
         "type": "Advanced"
       },
       {
-        "name": "18714071a879676c2277",
+        "name": "fd18563cdd7afded7dcc",
         "field": {
           "Measure": {
             "Expression": {

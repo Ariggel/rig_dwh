@@ -1,8 +1,63 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+<<<<<<< HEAD
   "name": "035bf8ffadf5ae65c60f",
   "displayName": "Seite 1",
   "displayOption": "FitToPage",
   "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "90aee4c2044a953c4000",
+      "target": "ddeda504cf6f2aba7561",
+      "type": "DataFilter"
+    },
+    {
+      "source": "90aee4c2044a953c4000",
+      "target": "ba9b006506db4555724d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "ddeda504cf6f2aba7561",
+      "target": "90aee4c2044a953c4000",
+      "type": "DataFilter"
+    },
+    {
+      "source": "fc9c4227f297016c0af2",
+      "target": "90aee4c2044a953c4000",
+      "type": "DataFilter"
+    },
+    {
+      "source": "ba9b006506db4555724d",
+      "target": "90aee4c2044a953c4000",
+      "type": "DataFilter"
+    },
+    {
+      "source": "fc9c4227f297016c0af2",
+      "target": "ddeda504cf6f2aba7561",
+      "type": "DataFilter"
+    },
+    {
+      "source": "ba9b006506db4555724d",
+      "target": "fc9c4227f297016c0af2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "ba9b006506db4555724d",
+      "target": "ddeda504cf6f2aba7561",
+      "type": "DataFilter"
+    }
+  ]
+=======
+<<<<<<<< HEAD:powerbi/motorcycle_traffic_accidents/MOTORCYCLE_TRAFFIC_ACCIDENTS.Report/definition/pages/571ee0e6628f9df9cb91/page.json
+  "name": "571ee0e6628f9df9cb91",
+  "displayName": "Seite 2",
+========
+  "name": "035bf8ffadf5ae65c60f",
+  "displayName": "Seite 1",
+>>>>>>>> main:powerbi/motorcycle_traffic_accidents/MOTORCYCLE_TRAFFIC_ACCIDENTS.Report/definition/pages/035bf8ffadf5ae65c60f/page.json
+  "displayOption": "FitToPage",
+  "height": 720,
   "width": 1280
+>>>>>>> main
 }

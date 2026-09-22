@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "ba9b006506db4555724d",
+  "name": "fc9c4227f297016c0af2",
   "position": {
-    "x": 13.617021276595745,
-    "y": 134.22492401215806,
-    "z": 0,
-    "height": 198.419452887538,
-    "width": 487.29483282674772,
-    "tabOrder": 0
+    "x": 523.63636363636363,
+    "y": 360.06861063464839,
+    "z": 4,
+    "height": 328.23327615780448,
+    "width": 747.581475128645,
+    "tabOrder": 4
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,16 +20,31 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DIM_CALENDAR"
+                      "Entity": "CORE_DIM_AGE"
                     }
                   },
-                  "Property": "YEAR"
+                  "Property": "AGE_NAME"
                 }
               },
-              "queryRef": "DIM_CALENDAR.YEAR",
-              "nativeQueryRef": "Jahr",
+              "queryRef": "CORE_DIM_AGE.AGE_NAME",
+              "nativeQueryRef": "Alter",
               "active": true,
-              "displayName": "Jahr"
+              "displayName": "Alter"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_ID"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_ID",
+              "nativeQueryRef": "AGE_ID",
+              "active": false
             }
           ]
         },
@@ -43,27 +58,12 @@
                       "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
                     }
                   },
-                  "Property": "Particpant at fault"
+                  "Property": "Participant at fault rate"
                 }
               },
-              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Particpant at fault",
-              "nativeQueryRef": "Hauptschuld Motorrad",
-              "displayName": "Hauptschuld Motorrad"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS"
-                    }
-                  },
-                  "Property": "Particpants overall"
-                }
-              },
-              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS.Particpants overall",
-              "nativeQueryRef": "Unfälle mit Motorrad gesamt",
-              "displayName": "Unfälle mit Motorrad gesamt"
+              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Participant at fault rate",
+              "nativeQueryRef": "Schuldquote",
+              "displayName": "Schuldquote"
             }
           ]
         }
@@ -72,35 +72,33 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                    "Entity": "CORE_DIM_AGE"
                   }
                 },
-                "Property": "Particpant at fault"
+                "Property": "AGE_NAME"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_DIM_AGE"
+                  }
+                },
+                "Property": "AGE_ID"
+              }
+            },
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "valueAxis": [
-        {
-          "properties": {
-            "axisStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'showUnitOnly'"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "visualContainerObjects": {
       "background": [
@@ -130,13 +128,6 @@
                 }
               }
             },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "15D"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
@@ -146,6 +137,13 @@
                       "Percent": -0.5
                     }
                   }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
                 }
               }
             }
@@ -158,7 +156,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Unfälle & Hauptschuldige Motorradfahrer'"
+                  "Value": "'Schuldquote nach Alter'"
                 }
               }
             }
@@ -171,21 +169,35 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "23348f8a8ad3cb26bb32",
+        "name": "df37b6b7a4d3889e4422",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "DIM_CALENDAR"
+                "Entity": "CORE_DIM_AGE"
               }
             },
-            "Property": "YEAR"
+            "Property": "AGE_ID"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "bd2c19819f1dd121edcd",
+        "name": "d3d98a34754e6be6e13c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "08c3e6f7979688f43edd",
         "field": {
           "Measure": {
             "Expression": {
@@ -193,21 +205,7 @@
                 "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
               }
             },
-            "Property": "Particpant at fault"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "18714071a879676c2277",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS"
-              }
-            },
-            "Property": "Particpants overall"
+            "Property": "Participant at fault rate"
           }
         },
         "type": "Advanced"

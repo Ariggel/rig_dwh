@@ -1,0 +1,221 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f0a10f3d71d9e4b89dc8",
+  "position": {
+    "x": 9.8126064735945473,
+    "y": 0,
+    "z": 0,
+    "height": 333.62862010221465,
+    "width": 566.95059625212946,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_NAME"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_NAME",
+              "nativeQueryRef": "AGE_NAME",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_AGE"
+                    }
+                  },
+                  "Property": "AGE_ID"
+                }
+              },
+              "queryRef": "CORE_DIM_AGE.AGE_ID",
+              "nativeQueryRef": "AGE_ID",
+              "active": false
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
+                    }
+                  },
+                  "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+                }
+              },
+              "queryRef": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY.TRAFFIC_ACCIDENT_CATEGORY_NAME",
+              "nativeQueryRef": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                    }
+                  },
+                  "Property": "Particpant at fault"
+                }
+              },
+              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Particpant at fault",
+              "nativeQueryRef": "Particpant at fault"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_DIM_AGE"
+                  }
+                },
+                "Property": "AGE_NAME"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f6e106d59abeed465a7b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
+              }
+            },
+            "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "c",
+              "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "c"
+                          }
+                        },
+                        "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Unfälle mit Personenschaden'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "requireSingleSelect": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "69caf994ac138410866d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+              }
+            },
+            "Property": "Particpant at fault"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3a6a7c368e5ac258dd3a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_ID"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "03a1d1f3df932e3864a7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_AGE"
+              }
+            },
+            "Property": "AGE_NAME"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
