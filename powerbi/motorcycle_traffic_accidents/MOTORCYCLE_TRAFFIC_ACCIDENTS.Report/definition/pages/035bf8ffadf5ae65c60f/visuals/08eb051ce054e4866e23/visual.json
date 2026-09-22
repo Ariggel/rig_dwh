@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "90aee4c2044a953c4000",
+  "name": "08eb051ce054e4866e23",
   "position": {
-    "x": 13.173241852487136,
-    "y": 360.06861063464839,
-    "z": 6,
-    "height": 328.23327615780448,
-    "width": 487.40994854202404,
-    "tabOrder": 6
+    "x": 513.55623100303956,
+    "y": 53.495440729483285,
+    "z": 7,
+    "height": 279.14893617021278,
+    "width": 252.88753799392097,
+    "tabOrder": 7
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,16 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "RAW_MAP_DWH_SEX"
+                      "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
                     }
                   },
-                  "Property": "SEX_NAME"
+                  "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
                 }
               },
-              "queryRef": "RAW_MAP_DWH_SEX.SEX_NAME",
-              "nativeQueryRef": "Geschlecht",
-              "active": true,
-              "displayName": "Geschlecht"
+              "queryRef": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY.TRAFFIC_ACCIDENT_CATEGORY_NAME",
+              "nativeQueryRef": "TRAFFIC_ACCIDENT_CATEGORY_NAME",
+              "active": true
             }
           ]
         },
@@ -72,19 +71,6 @@
       }
     },
     "objects": {
-      "labels": [
-        {
-          "properties": {
-            "labelStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Percent of total'"
-                }
-              }
-            }
-          }
-        }
-      ],
       "legend": [
         {
           "properties": {
@@ -103,10 +89,10 @@
       "title": [
         {
           "properties": {
-            "text": {
+            "titleWrap": {
               "expr": {
                 "Literal": {
-                  "Value": "'Schuldquote nach Geschlecht'"
+                  "Value": "true"
                 }
               }
             }
@@ -116,6 +102,13 @@
       "background": [
         {
           "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
             "color": {
               "solid": {
                 "color": {
@@ -124,6 +117,13 @@
                       "Value": "'#FFFCFC'"
                     }
                   }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -158,6 +158,13 @@
                   "Value": "15D"
                 }
               }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
@@ -168,7 +175,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "6d241a9ab55e89169180",
+        "name": "80ebddf3a72580c853e4",
         "field": {
           "Measure": {
             "Expression": {
@@ -182,64 +189,18 @@
         "type": "Advanced"
       },
       {
-        "name": "76ced2779e7bd5ad8045",
+        "name": "84ce419eb151248377e0",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "RAW_MAP_DWH_SEX"
+                "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
               }
             },
-            "Property": "SEX_NAME"
+            "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "r",
-              "Entity": "RAW_MAP_DWH_SEX",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "r"
-                          }
-                        },
-                        "Property": "SEX_NAME"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'Männlich'"
-                        }
-                      }
-                    ],
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'Weiblich'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        }
+        "type": "Categorical"
       }
     ]
   }

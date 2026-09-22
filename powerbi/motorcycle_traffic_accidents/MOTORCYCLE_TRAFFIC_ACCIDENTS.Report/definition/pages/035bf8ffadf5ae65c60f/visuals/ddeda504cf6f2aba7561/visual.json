@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "ddeda504cf6f2aba7561",
   "position": {
     "x": 783.951367781155,
@@ -10,7 +10,7 @@
     "tabOrder": 3
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
         "Category": {
@@ -168,7 +168,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a1ae8469cb5586387ac0",
+        "name": "15d94633dff3b71682a1",
         "field": {
           "Column": {
             "Expression": {
@@ -182,7 +182,7 @@
         "type": "Categorical"
       },
       {
-        "name": "931e5315e972b5e75174",
+        "name": "03f47c607c32f0b24af4",
         "field": {
           "Measure": {
             "Expression": {
