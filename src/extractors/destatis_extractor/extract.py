@@ -17,6 +17,10 @@ def extract(table_id : str, year_start : int = 2020, year_end : int = 2025, lang
         logger.debug('Attempting to parse response as JSON to check for background job.')
         data_raw_request.json()
 
+
+        logger.info('Response indicates a background job needs to be initiated. API is currently not able to handle jobs. Request canceled.')
+        return None
+
         logger.info('Response indicates a background job needs to be initiated. Proceeding to handle background job.')
         raw_job = request_post.job(table_id, year_start, year_end, language_data)
 

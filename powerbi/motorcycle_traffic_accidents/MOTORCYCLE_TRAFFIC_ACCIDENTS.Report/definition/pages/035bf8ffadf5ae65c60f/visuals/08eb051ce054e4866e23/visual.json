@@ -1,0 +1,207 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "08eb051ce054e4866e23",
+  "position": {
+    "x": 513.55623100303956,
+    "y": 53.495440729483285,
+    "z": 7,
+    "height": 279.14893617021278,
+    "width": 252.88753799392097,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
+                    }
+                  },
+                  "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+                }
+              },
+              "queryRef": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY.TRAFFIC_ACCIDENT_CATEGORY_NAME",
+              "nativeQueryRef": "TRAFFIC_ACCIDENT_CATEGORY_NAME",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                    }
+                  },
+                  "Property": "Participant at fault rate"
+                }
+              },
+              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Participant at fault rate",
+              "nativeQueryRef": "Participant at fault rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+                  }
+                },
+                "Property": "Participant at fault rate"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'TopCenter'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFCFC'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "80ebddf3a72580c853e4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+              }
+            },
+            "Property": "Participant at fault rate"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "84ce419eb151248377e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_DIM_TRAFFIC_ACCIDENT_CATEGORY"
+              }
+            },
+            "Property": "TRAFFIC_ACCIDENT_CATEGORY_NAME"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

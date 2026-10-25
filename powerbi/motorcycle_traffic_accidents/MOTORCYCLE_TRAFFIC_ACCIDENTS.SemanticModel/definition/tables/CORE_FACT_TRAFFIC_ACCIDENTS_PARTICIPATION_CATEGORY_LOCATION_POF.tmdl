@@ -1,6 +1,15 @@
 table CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF
 	lineageTag: b132e761-9276-4fbc-8f97-5824bb2d76c8
 
+	measure 'Particpant at fault' = SUM(CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF[PARTICIPANTS])
+		formatString: 0
+		lineageTag: 38d7c86d-5e10-435f-b473-f0a5d3c2c6f0
+
+	measure 'Participant at fault rate' = CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF[Particpant at fault]/ CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS[Particpants overall]
+		lineageTag: d6855437-9081-402a-8523-f35be392f7f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column FACT_ID
 		dataType: int64
 		formatString: 0

@@ -12,6 +12,7 @@
   "suffix_resultlist"   : "catalogue/results/", 
   "timeout"             : 15
   },
+  
   "sql": {
     "server": ".\\MSSQLSERVER01",
     "database": "DB_DWH",

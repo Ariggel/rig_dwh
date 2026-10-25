@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "ba9b006506db4555724d",
   "position": {
-    "x": 0,
-    "y": 31.618398637137989,
+    "x": 13.617021276595745,
+    "y": 134.22492401215806,
     "z": 0,
-    "height": 232.23168654173764,
-    "width": 867.8705281090289,
+    "height": 198.419452887538,
+    "width": 487.29483282674772,
     "tabOrder": 0
   },
   "visual": {
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "DIM_CALENDAR.YEAR",
-              "nativeQueryRef": "YEAR",
-              "active": true
+              "nativeQueryRef": "Jahr",
+              "active": true,
+              "displayName": "Jahr"
             }
           ]
         },
@@ -36,22 +37,33 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
-                        }
-                      },
-                      "Property": "PARTICIPANTS"
+                    "SourceRef": {
+                      "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
                     }
                   },
-                  "Function": 0
+                  "Property": "Particpant at fault"
                 }
               },
-              "queryRef": "Sum(CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.PARTICIPANTS)",
-              "nativeQueryRef": "Summe von PARTICIPANTS"
+              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF.Particpant at fault",
+              "nativeQueryRef": "Hauptschuld Motorrad",
+              "displayName": "Hauptschuld Motorrad"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS"
+                    }
+                  },
+                  "Property": "Particpants overall"
+                }
+              },
+              "queryRef": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS.Particpants overall",
+              "nativeQueryRef": "Unfälle mit Motorrad gesamt",
+              "displayName": "Unfälle mit Motorrad gesamt"
             }
           ]
         }
@@ -60,18 +72,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
-                      }
-                    },
-                    "Property": "PARTICIPANTS"
+                  "SourceRef": {
+                    "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
                   }
                 },
-                "Function": 0
+                "Property": "Particpant at fault"
               }
             },
             "direction": "Descending"
@@ -80,29 +87,89 @@
         "isDefaultSort": true
       }
     },
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "axisStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'showUnitOnly'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFCFC'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Unfälle & Hauptschuldige Motorradfahrer'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "588af1260f771aa6ec69",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
-                  }
-                },
-                "Property": "PARTICIPANTS"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "23348f8a8ad3cb26bb32",
         "field": {
@@ -113,6 +180,34 @@
               }
             },
             "Property": "YEAR"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bd2c19819f1dd121edcd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF"
+              }
+            },
+            "Property": "Particpant at fault"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "18714071a879676c2277",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS"
+              }
+            },
+            "Property": "Particpants overall"
           }
         },
         "type": "Advanced"

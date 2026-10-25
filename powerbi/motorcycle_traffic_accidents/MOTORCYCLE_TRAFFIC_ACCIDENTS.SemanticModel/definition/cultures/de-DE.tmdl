@@ -1,2 +1,158 @@
 cultureInfo de-DE
 
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "core_dim_road_environment.road_environment_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CORE_DIM_ROAD_ENVIRONMENT",
+			          "ConceptualProperty": "ROAD_ENVIRONMENT_NAME"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Ortslage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "core_dim_age.age_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CORE_DIM_AGE",
+			          "ConceptualProperty": "AGE_NAME"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Alter": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "core_fact_traffic_accidents_participation_category_location_pof.participant_at_fault_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF",
+			          "ConceptualProperty": "Participant at fault rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Schuldquote": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "core_fact_traffic_accidents_participation_category_location_pof.particpant_at_fault": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_POF",
+			          "ConceptualProperty": "Particpant at fault"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Hauptschuld Motorrad": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "core_fact_traffic_accidents_participation_category_location_participants.particpants_overall": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "CORE_FACT_TRAFFIC_ACCIDENTS_PARTICIPATION_CATEGORY_LOCATION_PARTICIPANTS",
+			          "ConceptualProperty": "Particpants overall"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Unfälle mit Motorrad gesamt": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_calendar.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DIM_CALENDAR",
+			          "ConceptualProperty": "YEAR"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Jahr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "raw_map_dwh_sex.sex_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RAW_MAP_DWH_SEX",
+			          "ConceptualProperty": "SEX_NAME"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Geschlecht": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+
