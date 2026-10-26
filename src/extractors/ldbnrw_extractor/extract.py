@@ -1,6 +1,8 @@
+import zipfile
+
 import pandas
 import json
-import os
+import os, io
 import requests
 
 from config import paths
@@ -8,7 +10,18 @@ from src.extractors.ldbnrw_extractor.parse_csv import parse_csv
 from src.extractors.ldbnrw_extractor.parse_zip import parse_zip
 from src.utilities import logging, exceptions
 
-def extract(table_id : str, year_start : int, year_end : int, language_data :str) -> pandas.DataFrame:
+def run(    
+                 table_id       : str
+                ,year_start     : int
+                ,year_end       : int
+                ,regionalvar    : str = None
+                ,regionalkey    : str = None
+                ,classifyvar1   : str = None
+                ,classifykey1   : str = None
+                ,classifyvar2   : str = None
+                ,classifykey2   : str = None
+                ,language_data  : str = 'de'
+            ) -> pandas.DataFrame:
     """
         Downloads tabular data from the LDB NRW API, extracts the compressed CSV response, and returns it as a pandas DataFrame.
 
@@ -46,12 +59,14 @@ def extract(table_id : str, year_start : int, year_end : int, language_data :str
         config = json.load(file)
 
     api_access_url = config['api_ldbnrw']['base_url']
-    api_access_token = os.getenv('LDBNRW_ACCESS_TOKEN')
+    #api_access_token = os.getenv('LDBNRW_ACCESS_TOKEN')
+    api_user = os.getenv('LDBNRW_USER')
+    api_password = os.getenv('LDBNRW_PASSWORD')
 
     headers = {
          'Content-Type': 'application/x-www-form-urlencoded'
-        ,'username' : api_access_token
-        ,'password' : ''
+        ,'username' : api_user
+        ,'password' : api_password
     }
 
     try:
@@ -59,13 +74,19 @@ def extract(table_id : str, year_start : int, year_end : int, language_data :str
             api_access_url + 'data/tablefile'
             ,headers = headers
             ,data = {
-                 'name'     : table_id
-                ,'startyear': year_start
-                ,'endyear'  : year_end
-                ,'transpose': 'true'
-                ,'compress' : 'true'
-                ,'format'   : 'ffcsv'
-                ,'language' : language_data
+                 'name'                 : table_id
+                ,'startyear'            : year_start
+                ,'endyear'              : year_end
+                ,'regionalvariable'     : regionalvar
+                ,'regionalkey'          : regionalkey
+                ,'classifyingvariable1' : classifyvar1
+                ,'classifyingkey1'      : classifykey1
+                ,'classifyingvariable2' : classifyvar2
+                ,'classifyingkey2'      : classifykey2
+                ,'transpose'            : 'true'
+                ,'compress'             : 'true'
+                ,'format'               : 'ffcsv'
+                ,'language'             : language_data
             }
         )
         logger.info('API request successfull, status code: %s', data_raw_request.status_code)
@@ -74,7 +95,11 @@ def extract(table_id : str, year_start : int, year_end : int, language_data :str
         raise exceptions.DataDownloadError(f"Failed to download data: {e}")
 
     if data_raw_request.status_code == 200:
-        raw_data_zipped = parse_zip(data_raw_request)
+        #raw_data_zipped = parse_zip(data_raw_request)
+
+        
+        data_raw_bytes = io.BytesIO(data_raw_request.content)            
+        raw_data_zipped = zipfile.ZipFile(data_raw_bytes)
         raw_data_frame = parse_csv(raw_data_zipped)
     else:
         logger.error('API request failed with status code: %s', data_raw_request.status_code)
