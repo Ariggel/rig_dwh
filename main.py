@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 from src.loaders.sql_loader import create_sql_engine, load_dataframe
-from src.orchestration.ldbnrw_munic_fin_exp_job import run
+from src.orchestration import ldbnrw_munic_fin_exp_job, ldbnrw_munic_fin_inc_job
 
 #from src.extractors import ldbnrw_extractor
 
@@ -11,7 +11,7 @@ engine = create_sql_engine()
 
 
 
-results = run()
+results = ldbnrw_munic_fin_inc_job.run()
 
 
 

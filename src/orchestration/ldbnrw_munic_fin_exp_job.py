@@ -1,7 +1,7 @@
 
 import pandas
 from config.ldbnrw_data import TABLE_CONFIG
-from config.ldbnrw_munic_fin_exp_accounts import ACCOUNT_LIST
+from config.ldbnrw_municipalities_exp_accounts import ACCOUNT_LIST
 from config.ldbnrw_munic_fin_exp_municipalities import MUNICIPALITY_LIST
 from src.extractors.ldbnrw_extractor import extract
 from src.utilities import logging, exceptions
