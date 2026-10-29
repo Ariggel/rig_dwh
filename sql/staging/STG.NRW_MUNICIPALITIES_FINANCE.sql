@@ -22,7 +22,7 @@ Business Rules
 
 Logic
 --------------------------------------------------------------------------------------------------------------
-1. Truncate the staging table DB_DWH.STG.NRW_MANUCIPALITIES_FINANCE to remove any existing data.
+1. Truncate the staging table DB_DWH.STG.NRW_MUNICIPALITIES_FINANCE to remove any existing data.
 2. Create temporary tables #SRC_DAT_EXP and #SRC_DAT_INC to hold the transformed data
    from the source tables DB_DWH.RAW.DATA_LDBNRW_MUNICIPALITIES_FINANCE_EXPENDITURES and DB_DWH.RAW.DATA_LDBNRW_MUNICIPALITIES_FINANCE_INCOME respectively.
 3. Transform the source data to match the staging table structure and data types.
