@@ -63,6 +63,7 @@ def run(
     api_user = os.getenv('LDBNRW_USER')
     api_password = os.getenv('LDBNRW_PASSWORD')
 
+    logger.info('Creating API header...')
     headers = {
          'Content-Type': 'application/x-www-form-urlencoded'
         ,'username' : api_user
@@ -70,6 +71,7 @@ def run(
     }
 
     try:
+        logger.info('Sending request to API...')
         data_raw_request = requests.post(
             api_access_url + 'data/tablefile'
             ,headers = headers
@@ -89,6 +91,8 @@ def run(
                 ,'language'             : language_data
             }
         )
+        logger.info('Status:',data_raw_request.status_code)
+        logger.info('Content:',data_raw_request.content)
         logger.info('API request successfull, status code: %s', data_raw_request.status_code)
     except requests.RequestException as e:
         logger.error('API request failed: %s', e)

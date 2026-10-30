@@ -1,0 +1,24 @@
+{
+    "parameters_general" : {
+         "year_start"           : 2009
+        ,"year_end"             : 2021
+        ,"regionalvariable"     : "GEMGFR"
+        ,"classifyingvariable1" : "PRODGR"
+        ,"regionalkey"          : "*"
+        ,"classifyingkey1"      : "*"
+        ,"language_data"        : "de"
+    },
+
+    "parameters_income" : {
+         "table_name_db"        : "DATA_LDBNRW_MUNICIPALITIES_FINANCE_INCOME"
+        ,"table_id"             : "79118-02i"
+        ,"classifyingvariable2" : "KONTO4"
+    },
+
+    "parameters_expenditures" : {
+         "table_name_db"        : "DATA_LDBNRW_MUNICIPALITIES_FINANCE_EXPENDITURES"
+        ,"table_id"             : "79118-12i"
+        ,"classifyingvariable2" : "KONTO5"
+    }
+
+}
