@@ -8,7 +8,10 @@
 
   "api_ldbnrw"          : {
     "base_url"            : "https://www.landesdatenbank.nrw.de/ldbnrwws/rest/2020/",
-    "suffix_job"          : "catalogue/jobs/",
+    "content_type"        : "application/x-www-form-urlencoded",
+    "suffix_tablefile"    : "data/tablefile",
+    "suffix_job"          : "data/job",
+    "suffix_joblist"      : "catalogue/jobs",
     "suffix_resultlist"   : "catalogue/results/", 
     "timeout"             : 15
   },
